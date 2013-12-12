@@ -23,3 +23,18 @@ sequelize = new Sequelize(dbConfig.name, dbConfig.user, dbConfig.password, {
   host: dbConfig.host,
   port: 5432,
 });
+
+var User = sequelize.define('user', {
+  id: Sequelize.INTEGER
+});
+
+User.all().success(function (users){
+  console.log(users);
+});
+
+User.build({ id: 5 }).save().success(function () {
+  sequelize.query('SELECT * FROM users').success(function(users){
+    console.log(users);
+  });
+});
+
