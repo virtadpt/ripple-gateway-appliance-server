@@ -1,0 +1,9 @@
+{
+  "name": "ripple-gateway-appliance-server",
+  "version": "0.0.0",
+  "dependencies" : {
+    "express": "3.x",
+    "pg": "",
+    "sequelize": ""
+  }
+}
