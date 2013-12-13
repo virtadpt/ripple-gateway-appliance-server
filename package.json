@@ -4,6 +4,8 @@
   "dependencies" : {
     "express": "3.x",
     "pg": "",
-    "sequelize": ""
+    "sequelize": "",
+    "sequelize-postgres": "",
+    "db-migrate":""
   }
 }

@@ -1,0 +1,9 @@
+{
+  "development": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": process.env.POSTGRESQL_PASSWORD,
+    "host": "localhost",
+    "database": "sequelize_development"
+  }
+}

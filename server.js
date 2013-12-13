@@ -2,7 +2,8 @@ var express = require('express'),
     http    = require('http'),
     path    = require('path'),
     pg      = require('pg'),
-    Sequelize = require('sequelize')
+    db      = require('./db'),
+    User    = require('./models/user');
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -11,30 +12,12 @@ app.use(express.bodyParser())
 app.use(express.methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
 
-var dbConfig = {
-  host: process.env.POSTGRESQL_HOST,
-  name: process.env.POSTGRESQL_DB_NAME,
-  user: process.env.POSTGRESQL_USER,
-  password: process.env.POSTGRESQL_PASSWORD
-};
+app.get('/users', function(req, res) {
+	User.all().success(function(users) {
+    res.send(users);
+	});
+})
 
-sequelize = new Sequelize(dbConfig.name, dbConfig.user, dbConfig.password, {
-  dialect: "postgres",
-  host: dbConfig.host,
-  port: 5432,
-});
-
-var User = sequelize.define('user', {
-  id: Sequelize.INTEGER
-});
-
-User.all().success(function (users){
-  console.log(users);
-});
-
-User.build({ id: 5 }).save().success(function () {
-  sequelize.query('SELECT * FROM users').success(function(users){
-    console.log(users);
-  });
-});
+app.listen(3000);
+console.log('Listening on port 3000');
 
