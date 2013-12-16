@@ -34,7 +34,7 @@ app.post('/users', function(req, res) {
 
 		user.save()
 		.success(function() {
-			res.send({ status: 'user created' })
+			res.send({ status: 'user created', user: user })
 		})
 		.error(function(err) {
 			res.send({ status: 'user not created', error: err });
@@ -46,7 +46,6 @@ app.post('/users', function(req, res) {
   }
 });
 
-// login with name, password
 app.post('/sessions', function(req, res) {
   if (req.body.name && req.body.password) {
     User.findAll({ where: { name: req.body.name }})
