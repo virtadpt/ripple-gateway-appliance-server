@@ -48,10 +48,24 @@ app.post('/users', function(req, res) {
 
 // login with name, password
 app.post('/sessions', function(req, res) {
-  if (true) {
-    res.send({
-			valid: verifyPassword(req.body.password, req.body.salt, req.body.hash)
-    }); 
+  if (req.body.name && req.body.password) {
+    User.findAll({ where: { name: req.body.name }})
+    .error(function(err){
+			res.send({ error: 'user not found' });
+    })
+		.success(function(results){
+			user = results[0];
+			if (user) {
+				var valid = verifyPassword(
+					req.body.password, 
+					user.salt, 
+					user.passwordHash
+				);
+				res.send({ isValidUser: valid });
+			} else {
+				res.send({ error: 'user not found' });
+			}
+		});
   } else {
 	  res.send({
 		  error: 'required params: name, password'
