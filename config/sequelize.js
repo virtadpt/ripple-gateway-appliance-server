@@ -1,10 +1,10 @@
 var Sequelize = require('sequelize');
 
 var dbConfig = {
-  host: process.env.POSTGRESQL_HOST,
-  name: process.env.POSTGRESQL_DB_NAME,
-  user: process.env.POSTGRESQL_USER,
-  password: process.env.POSTGRESQL_PASSWORD
+  host: '127.0.0.1',
+  name: 'sequelize_development',
+  user: 'postgres',
+  password: 'password'
 };
 
 sequelize = new Sequelize(dbConfig.name, dbConfig.user, dbConfig.password, {
