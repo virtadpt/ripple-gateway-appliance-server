@@ -7,7 +7,7 @@ var User = sequelize.define('user', {
   bankAccountId: Sequelize.INTEGER,
   name: Sequelize.STRING,
   salt: Sequelize.STRING,
-  password_hash: Sequelize.STRING
+  passwordHash: Sequelize.STRING
 });
 
 module.exports = User;

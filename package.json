@@ -6,6 +6,7 @@
     "pg": "",
     "sequelize": "",
     "sequelize-postgres": "",
-    "db-migrate":""
+    "db-migrate":"",
+    "uuid":""
   }
 }

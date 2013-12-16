@@ -3,7 +3,9 @@ var express = require('express'),
     path    = require('path'),
     pg      = require('pg'),
     db      = require('./db'),
-    User    = require('./models/user');
+    User    = require('./models/user'),
+    crypto  = require('crypto'),
+		uuid    = require('uuid');
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -17,6 +19,58 @@ app.get('/users', function(req, res) {
     res.send(users);
 	});
 })
+
+app.post('/users', function(req, res) {
+  if (req.body.name && req.body.password) {
+		var salt = generateSalt();
+		var passwordHash = saltPassword(req.body.password, salt);
+
+    var user = User.build({
+			id : uuid.v4(),
+			name: req.body.name,
+  	  salt: salt,
+ 			passwordHash: passwordHash
+    });
+
+		user.save()
+		.success(function() {
+			res.send({ status: 'user created' })
+		})
+		.error(function(err) {
+			res.send({ status: 'user not created', error: err });
+		});
+  } else {
+	  res.send({
+		  error: 'required params: name, password'
+		});
+  }
+});
+
+// login with name, password
+app.post('/sessions', function(req, res) {
+  if (true) {
+    res.send({
+			valid: verifyPassword(req.body.password, req.body.salt, req.body.hash)
+    }); 
+  } else {
+	  res.send({
+		  error: 'required params: name, password'
+		});
+  }
+});
+
+function verifyPassword (password, salt, passwordHash) {
+  return (saltPassword(password, salt) == passwordHash);
+}
+
+function saltPassword (password, salt) {
+	return crypto.createHmac('sha1', salt).update(password).digest('hex');
+}
+
+function generateSalt () {
+	var sha = crypto.createHash('sha1');
+	return sha.update(crypto.randomBytes(128)).digest('hex');
+} 
 
 app.listen(3000);
 console.log('Listening on port 3000');
