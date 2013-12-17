@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+var bank_tx
 var db = require('../db');
 
 var User = sequelize.define('user', {
@@ -8,6 +9,23 @@ var User = sequelize.define('user', {
   name: Sequelize.STRING,
   salt: Sequelize.STRING,
   passwordHash: Sequelize.STRING
+}, {
+  instanceMethods: {
+    balance: function(currency) {
+	    //return this.bankBalance(currency) - this.rippleBalance(currency);  	
+    },
+		bankDeposits: function(done) {
+			BankTx.where({ userId: this.id, deposit: true }, done);
+		},
+    bankWithdrawals: function (done) {
+			BankTx.where({ userId: this.id, deposit: false }, done);
+		},
+		balances: function() {},
+		bankBalance: function(currency) {},
+		bankBalances: function() {},
+		rippleBalance: function(currency) {},
+		rippleBalances: function() {} 
+  } 
 });
 
 module.exports = User;
