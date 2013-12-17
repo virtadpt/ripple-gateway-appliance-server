@@ -43,6 +43,27 @@ app.post('/users', function(req, res) {
   }
 });
 
+// Create a bank transaction if allowed by session
+app.post('/bank_transactions', function(req, res) {
+  BankTx.build().save();
+});
+
+// Create a ripple transaction if allowed by session
+app.post('/ripple_transactions', function(req, res) {
+  RippleTx.build().save();
+};
+
+// Get a user's balances if allowed by session
+app.get('/users/:userId/balances', function(req, res) {
+  Balance.find({ where : { userId: req.query.userId }})
+  .error(function(err){
+		res.send({ error: 'error finding balances for '+req.query.userId });
+	})
+  .success(function(balances){
+		res.send({ balances: balances });
+  });
+});
+
 // Authentication
 app.post('/sessions', function(req, res) {
   var user, valid;
