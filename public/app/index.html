@@ -26,6 +26,15 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+				<li class="active"><a ng-href="#">Home</a></li>
+				<li><a ng-href="#/users">Users</a></li>
+				<li><a ng-href="#">Contact</a></li>
+			</ul>
+			<h1 class="text-muted">Ripple Gateway in a Box</h1>
+		</div>
+
     <div class="container" ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -67,6 +76,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/users.js"></script>
         <!-- endbuild -->
 </body>
 </html>

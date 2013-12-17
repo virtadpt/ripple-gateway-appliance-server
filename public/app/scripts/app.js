@@ -12,6 +12,10 @@ angular.module('publicApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+			.when('/users', {
+				templateUrl: 'views/users.html',
+				controller: 'UsersCtrl'
+			})
       .otherwise({
         redirectTo: '/'
       });
