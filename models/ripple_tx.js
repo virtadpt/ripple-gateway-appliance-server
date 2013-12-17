@@ -12,4 +12,4 @@ var RippleTx = sequelize.define('ripple_tx', {
   txState: Sequelize.STRING
 });
 
-module.exports = User;
+module.exports = RippleTx;

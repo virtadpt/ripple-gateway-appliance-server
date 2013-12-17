@@ -10,4 +10,4 @@ var BankTx = sequelize.define('bankTx', {
   rippleTxId: Sequelize.INTEGER
 });
 
-module.exports = User;
+module.exports = BankTx;
