@@ -4,7 +4,7 @@ var express = require('express'),
     pg      = require('pg'),
     db      = require('./config/sequelize.js'),
     User    = require('./models/user.js'),
-    utils   = require('./utils.js'),
+    utils   = require('./utils.js');
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -51,7 +51,7 @@ app.post('/bank_transactions', function(req, res) {
 // Create a ripple transaction if allowed by session
 app.post('/ripple_transactions', function(req, res) {
   RippleTx.build().save();
-};
+});
 
 // Get a user's balances if allowed by session
 app.get('/users/:userId/balances', function(req, res) {
