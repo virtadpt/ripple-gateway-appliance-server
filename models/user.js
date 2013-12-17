@@ -1,9 +1,16 @@
 var Sequelize = require('sequelize');
-var bank_tx
 var db = require('../db');
 
 var User = sequelize.define('user', {
-  id: Sequelize.INTEGER,
+  id: { 
+		type: Sequelize.INTEGER,
+		primaryKey: true,
+		autoIncrement: true,
+		notNull: true,
+		unique: true,
+	},
+  federationTag: Sequelize.STRING,
+  federationName: Sequelize.STRING,
   kycId: Sequelize.INTEGER,
   bankAccountId: Sequelize.INTEGER,
   name: Sequelize.STRING,

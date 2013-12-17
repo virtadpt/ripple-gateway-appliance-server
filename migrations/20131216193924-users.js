@@ -3,9 +3,11 @@ var type = dbm.dataType;
 
 exports.up = function(db, callback) {
   db.createTable('users', { 
-		id: { type: 'string', primaryKey: true, notNull: true, unique: true },
+		id: { type: 'int', primaryKey: true, notNull: true, unique: true },
     name: { type: 'string', notNull: true, unique: true },
     salt: { type: 'string', notNull: true },
+    federationTag: { type: 'string', notNull: true },
+    federationName: { type: 'string', notNull: true },
     passwordHash: { type: 'string', notNull: true },
     bankAccountId: { type: 'int'},
     kycId: { type: 'int' },
