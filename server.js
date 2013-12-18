@@ -13,14 +13,14 @@ app.use(express.bodyParser())
 app.use(express.methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/users', function(req, res) {
+app.get('/api/users', function(req, res) {
 	User.all().success(function(users) {
     res.send(users);
 	});
 })
 
 // Registration
-app.post('/users', function(req, res) {
+app.post('/api/users', function(req, res) {
   if (req.body.name && req.body.password) {
 		var salt = utils.generateSalt();
 		var passwordHash = utils.saltPassword(req.body.password, salt);
@@ -44,17 +44,17 @@ app.post('/users', function(req, res) {
 });
 
 // Create a bank transaction if allowed by session
-app.post('/bank_transactions', function(req, res) {
+app.post('/api/bank_transactions', function(req, res) {
   BankTx.build().save();
 });
 
 // Create a ripple transaction if allowed by session
-app.post('/ripple_transactions', function(req, res) {
+app.post('/api/ripple_transactions', function(req, res) {
   RippleTx.build().save();
 });
 
 // Get a user's balances if allowed by session
-app.get('/users/:userId/balances', function(req, res) {
+app.get('/api/users/:userId/balances', function(req, res) {
   Balance.find({ where : { userId: req.query.userId }})
   .error(function(err){
 		res.send({ error: 'error finding balances for '+req.query.userId });
@@ -65,7 +65,7 @@ app.get('/users/:userId/balances', function(req, res) {
 });
 
 // Authentication
-app.post('/sessions', function(req, res) {
+app.post('/api/sessions', function(req, res) {
   var user, valid;
   if (req.body.name && req.body.password) {
     User.findAll({ where: { name: req.body.name }})
