@@ -28,7 +28,9 @@ app.post('/api/users', function(req, res) {
     var user = User.build({
 			name: req.body.name,
   	  salt: salt,
- 			passwordHash: passwordHash
+ 			passwordHash: passwordHash,
+			federationTag: 'federationTag',
+      federationName: 'federationName'
     });
 
 		user.save()

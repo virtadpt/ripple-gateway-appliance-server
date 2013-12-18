@@ -11,6 +11,7 @@ sequelize = new Sequelize(dbConfig.name, dbConfig.user, dbConfig.password, {
   dialect: "postgres",
   host: dbConfig.host,
   port: 5432,
+  omitNull: true
 });
 
 module.exports = sequelize;
