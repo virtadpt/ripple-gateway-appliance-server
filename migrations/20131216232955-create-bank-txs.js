@@ -3,7 +3,7 @@ var type = dbm.dataType;
 
 exports.up = function(db, callback) {
   db.createTable('bank_transactions', { 
-		id: { type: 'int', primaryKey: true, autoIncrement: true, unique: true },
+		id: { type: 'int', primaryKey: true, autoIncrement: true },
     deposit: { type: 'boolean', notNull: true },
     currency: { type: 'string', notNull: true },
     cashAmount: { type: 'decimal', notNull: true },

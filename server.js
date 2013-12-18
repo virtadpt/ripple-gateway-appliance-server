@@ -112,7 +112,7 @@ app.get('/api/session', function(req, res) {
 //app.post('/api/withdrawals', WithdrawalsCtrl.create);
 
 app.get('/api/deposits', DepositsCtrl.index);
-app.post('/api/withdrawals', DepositsCtrl.create);
+app.post('/api/deposits', DepositsCtrl.create);
 
 var port = process.env.PORT || 443;
 https.createServer(credentials,app).listen(port);

@@ -12,8 +12,23 @@ var DepositsCtrl = (function(){
 	}
 
 	function create(req, res){
-
+		console.log('attempting to create a deposit');
+		BankTx.create({
+			deposit: true,
+			currency: req.body.currency,
+			cashAmount: req.body.cashAmount
+		})
+		.success(function(transaction){
+			res.send({
+				status: 'success',
+				deposit: transaction,
+			});
+		})
+		.error(function(err){
+			res.send({ error: err });
+		})
 	}
+
   return {
 		index: index,
 		create: create
