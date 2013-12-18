@@ -10,15 +10,12 @@ angular.module('publicApp')
 				name: name,
 				password: password
 			})	
-			.success(function(user){
-				$http.get('/api/session')
-				.success(function(response){
-					if (response.session) {
-						$location.path('/admin/users');
-					} else {
-						$location.path('/admin/users/new');
-					}
-				});
+			.success(function(response){
+        if (response.isValidUser) {
+					$location.path('/admin/users');
+				} else {
+					$location.path('/admin/users/new');
+				}
 			})
 			.error(function(err){
 				console.log('error: could not create a session');

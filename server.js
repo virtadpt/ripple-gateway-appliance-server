@@ -10,6 +10,8 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.use(express.favicon())
 app.use(express.bodyParser())
+app.use(express.cookieParser());
+app.use(express.session({secret: 'oi09ajsdf09fwlkej33lkjpx'}));
 app.use(express.methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -67,7 +69,8 @@ app.get('/api/users/:userId/balances', function(req, res) {
 });
 
 // Authentication
-app.post('/api/sessions', function(req, res) {
+app.post('/api/session', function(req, res) {
+	req.session.session = null;
   var user, valid;
   if (req.body.name && req.body.password) {
     User.findAll({ where: { name: req.body.name }})
@@ -78,6 +81,9 @@ app.post('/api/sessions', function(req, res) {
 			user = results[0];
 			if (user) {
 				valid = utils.verifyPassword(req.body.password, user.salt, user.passwordHash);
+				if (valid) {
+					req.session.session = true;
+				}
 				res.send({ isValidUser: valid });
 			} else {
 				res.send({ error: 'user not found' });
@@ -86,6 +92,12 @@ app.post('/api/sessions', function(req, res) {
   } else {
 	  res.send({ error: 'required params: name, password' });
   }
+});
+
+app.get('/api/session', function(req, res) {
+  res.send({
+		session: req.session.session
+	})
 });
 
 
