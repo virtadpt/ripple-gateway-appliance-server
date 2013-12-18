@@ -1,6 +1,22 @@
 <div class="jumbotron">
-  <ul>
-		<li ng-repeat='user in users'>{{user.name}}</li>
-  </ul>
+  <table class='table'>
+    <tr>
+		  <td>id</td>	
+		  <td>name</td>	
+		  <td>createdAt</td>	
+		  <td>federationTag</td>	
+		  <td>federationName</td>	
+		  <td>gatewayAccountId</td>	
+		</tr>
+		<hr/>
+		<tr ng-repeat='user in users'>
+			<td>{{ user.id }}</td>
+			<td>{{ user.name }}</td>
+			<td>{{ user.createdAt }}</td>
+			<td>{{ user.federationTag }}</td>
+			<td>{{ user.federationName }}</td>
+			<td>{{ user.gatewayAccountId }}</td>
+		<tr>
+  </table>
 </div>
 
