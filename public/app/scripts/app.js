@@ -12,6 +12,11 @@ angular.module('publicApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/admin/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl'
+      })
+/*
 			.when('/users/:id', {
 				templateUrl: 'views/user.html',
 				controller: 'UserCtrl'
@@ -36,6 +41,7 @@ angular.module('publicApp', [
 				templateUrl: 'views/registration.html',
 				templateUrl: 'LoginCtrl'
 			})
+*/
       .otherwise({
         redirectTo: '/'
       });
