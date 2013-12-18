@@ -2,7 +2,7 @@ var dbm = require('db-migrate');
 var type = dbm.dataType;
 
 exports.up = function(db, callback) {
-  db.createTable('bank_txs', { 
+  db.createTable('bank_transactions', { 
 		id: { type: 'int', primaryKey: true, autoIncrement: true, unique: true },
     deposit: { type: 'boolean', notNull: true },
     currency: { type: 'string', notNull: true },
@@ -15,5 +15,5 @@ exports.up = function(db, callback) {
 };
 
 exports.down = function(db, callback) {
-  db.dropTable('bank_txs', callback);
+  db.dropTable('bank_transactions', callback);
 };

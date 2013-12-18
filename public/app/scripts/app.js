@@ -30,6 +30,10 @@ angular.module('publicApp', [
 				controller: 'AdminUsersCtrl'
 			})
 */
+			.when('/admin/deposits/new', {
+				templateUrl: 'views/deposits/new.html',
+				controller: 'AdminDepositsCtrl'
+			})
 			.when('/admin/users/new', {
 				templateUrl: 'views/admin/users/new.html',
 				controller: 'AdminNewUserCtrl'
@@ -38,12 +42,6 @@ angular.module('publicApp', [
 				templateUrl: 'views/main.html',
 				controller: 'LoginCtrl'
 			})
-/*
-			.when('/register', {
-				templateUrl: 'views/registration.html',
-				templateUrl: 'RegistrationCtrl'
-			})
-*/
       .otherwise({
         redirectTo: '/'
       });

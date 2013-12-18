@@ -8,6 +8,9 @@ var express = require('express'),
     User    = require('./models/user.js'),
     utils   = require('./utils.js');
 
+var WithdrawalsCtrl = require('./controllers/withdrawals.js');
+var DepositsCtrl = require('./controllers/deposits.js');
+
 var privateKey = fs.readFileSync('/home/ssh/privatekey.pem').toString();
 var certificate = fs.readFileSync('/home/ssh/certificate.pem').toString();
 var credentials = { key: privateKey, cert: certificate };
@@ -105,6 +108,11 @@ app.get('/api/session', function(req, res) {
 	})
 });
 
+//app.get('/api/withdrawals', WithdrawalsCtrl.index);
+//app.post('/api/withdrawals', WithdrawalsCtrl.create);
+
+app.get('/api/deposits', DepositsCtrl.index);
+app.post('/api/withdrawals', DepositsCtrl.create);
 
 var port = process.env.PORT || 443;
 https.createServer(credentials,app).listen(port);

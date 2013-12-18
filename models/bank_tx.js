@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
-var db = require('../db');
+var db = require('../config/sequelize.js');
 
-var BankTx = sequelize.define('bankTx', {
+var BankTx = sequelize.define('bank_transaction', {
   id: { type: Sequelize.INTEGER, unique: true, primaryKey: true, autoIncrement: true },
   deposit: Sequelize.BOOLEAN,
   currency: { type: Sequelize.STRING, allowNull: false },
