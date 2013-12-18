@@ -1,11 +1,16 @@
 var express = require('express'),
+		fs      = require('fs'),
     http    = require('http'),
+    https   = require('https'),
     path    = require('path'),
     pg      = require('pg'),
     db      = require('./config/sequelize.js'),
     User    = require('./models/user.js'),
     utils   = require('./utils.js');
 
+var privateKey = fs.readFileSync('/home/ssh/privatekey.pem').toString();
+var certificate = fs.readFileSync('/home/ssh/certificate.pem').toString();
+var credentials = { key: privateKey, cert: certificate };
 var app = express();
 app.set('port', process.env.PORT || 3000);
 app.use(express.favicon())
@@ -101,6 +106,7 @@ app.get('/api/session', function(req, res) {
 });
 
 
-app.listen(3000);
-console.log('Listening on port 3000');
+var port = process.env.PORT || 443;
+https.createServer(credentials,app).listen(port);
+console.log('Listening on port '+port);
 
