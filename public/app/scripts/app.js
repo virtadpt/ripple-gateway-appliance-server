@@ -34,14 +34,14 @@ angular.module('publicApp', [
 				templateUrl: 'views/admin/users/new.html',
 				controller: 'AdminNewUserCtrl'
 			})
+			.when('/login', {
+				templateUrl: 'views/main.html',
+				controller: 'LoginCtrl'
+			})
 /*
 			.when('/register', {
 				templateUrl: 'views/registration.html',
 				templateUrl: 'RegistrationCtrl'
-			})
-			.when('/login', {
-				templateUrl: 'views/registration.html',
-				templateUrl: 'LoginCtrl'
 			})
 */
       .otherwise({
