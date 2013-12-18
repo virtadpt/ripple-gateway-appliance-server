@@ -29,10 +29,12 @@ angular.module('publicApp', [
 				templateUrl: 'views/admin/users/index.html',
 				controller: 'AdminUsersCtrl'
 			})
+*/
 			.when('/admin/users/new', {
 				templateUrl: 'views/admin/users/new.html',
 				controller: 'AdminNewUserCtrl'
 			})
+/*
 			.when('/register', {
 				templateUrl: 'views/registration.html',
 				templateUrl: 'RegistrationCtrl'
