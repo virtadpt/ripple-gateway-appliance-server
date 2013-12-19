@@ -2,7 +2,7 @@ var dbm = require('db-migrate');
 var type = dbm.dataType;
 
 exports.up = function(db, callback) {
-  db.createTable('ripple_txs', { 
+  db.createTable('ripple_transactions', { 
 		id: { type: 'int', primaryKey: true, autoIncrement: true, notNull: true, unique: true },
     issuance: { type: 'boolean', notNull: true },
     toCurrency: { type: 'string', notNull: true },
@@ -18,6 +18,6 @@ exports.up = function(db, callback) {
 };
 
 exports.down = function(db, callback) {
-  db.dropTable('ripple_txs', callback);
+  db.dropTable('ripple_transactions', callback);
   callback();
 };
