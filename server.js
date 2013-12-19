@@ -8,8 +8,15 @@ var express = require('express'),
     User    = require('./models/user.js'),
     utils   = require('./utils.js');
 
-var WithdrawalsCtrl = require('./controllers/withdrawals.js');
-var DepositsCtrl = require('./controllers/deposits.js');
+var WithdrawalsCtrl     = require('./controllers/withdrawals.js'),
+		DepositsCtrl        = require('./controllers/deposits.js'),
+		BalancesCtrl        = require('./controllers/balances.js'),
+		BankAccountsCtrl    = require('./controllers/bank_accounts.js'),
+		BankTransactionsCtrl         = require('./controllers/bank_transactions.js'),
+		RippleTransactionsCtrl       = require('./controllers/ripple_transactions.js'),
+		RippleAddressesCtrl = require('./controllers/ripple_addresses.js'),
+		UsersCtrl           = require('./controllers/users.js'),
+		SessionCtrl         = require('./controllers/session.js');
 
 var privateKey = fs.readFileSync('/home/ssh/privatekey.pem').toString();
 var certificate = fs.readFileSync('/home/ssh/certificate.pem').toString();
@@ -23,96 +30,32 @@ app.use(express.session({secret: 'oi09ajsdf09fwlkej33lkjpx'}));
 app.use(express.methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/api/users', function(req, res) {
-	User.all().success(function(users) {
-    res.send(users);
-	});
-})
+app.get('/api/users', UsersCtrl.index);
+app.post('/api/users', UsersCtrl.create);
+app.post('/api/session', SessionCtrl.create);
+app.get('/api/session', SessionCtrl.index);
 
-// Registration
-app.post('/api/users', function(req, res) {
-  if (req.body.name && req.body.password) {
-		var salt = utils.generateSalt();
-		var passwordHash = utils.saltPassword(req.body.password, salt);
+app.get('/api/users/:id/balances', BalancesCtrl.userBalances);
+app.get('/api/users/:user_id/bank_accounts', BankAccountsCtrl.userIndex);
+app.get('/api/users/:user_id/ripple_addresses', RippleAddressesCtrl.userIndex);
+app.get('/api/users/:user_id/bank_transactions', BankTransactionsCtrl.userIndex);
+app.get('/api/users/:user_id/ripple_transactions', RippleTransactionsCtrl.userIndex);
 
-    var user = User.build({
-			name: req.body.name,
-  	  salt: salt,
- 			passwordHash: passwordHash,
-			federationTag: 'federationTag',
-      federationName: 'federationName'
-    });
+app.post('/api/users/:user_id/bank_accounts', BankAccountsCtrl.create);
+app.post('/api/users/:user_id/ripple_addresses', RippleAddressesCtrl.create);
 
-		user.save()
-		.success(function() {
-			res.send({ status: 'user created', user: user })
-		})
-		.error(function(err) {
-			res.send({ status: 'user not created', error: err });
-		});
-  } else {
-	  res.send({ error: 'required params: name, password' });
-  }
-});
-
-// Create a bank transaction if allowed by session
-app.post('/api/bank_transactions', function(req, res) {
-  BankTx.build().save();
-});
-
-// Create a ripple transaction if allowed by session
-app.post('/api/ripple_transactions', function(req, res) {
-  RippleTx.build().save();
-});
-
-// Get a user's balances if allowed by session
-app.get('/api/users/:userId/balances', function(req, res) {
-  Balance.find({ where : { userId: req.query.userId }})
-  .error(function(err){
-		res.send({ error: 'error finding balances for '+req.query.userId });
-	})
-  .success(function(balances){
-		res.send({ balances: balances });
-  });
-});
-
-// Authentication
-app.post('/api/session', function(req, res) {
-	req.session.session = null;
-  var user, valid;
-  if (req.body.name && req.body.password) {
-    User.findAll({ where: { name: req.body.name }})
-    .error(function(err){
-			res.send({ error: 'user not found' });
-    })
-		.success(function(results){
-			user = results[0];
-			if (user) {
-				valid = utils.verifyPassword(req.body.password, user.salt, user.passwordHash);
-				if (valid) {
-					req.session.session = true;
-				}
-				res.send({ isValidUser: valid });
-			} else {
-				res.send({ error: 'user not found' });
-			}
-		});
-  } else {
-	  res.send({ error: 'required params: name, password' });
-  }
-});
-
-app.get('/api/session', function(req, res) {
-  res.send({
-		session: req.session.session
-	})
-});
-
-//app.get('/api/withdrawals', WithdrawalsCtrl.index);
-//app.post('/api/withdrawals', WithdrawalsCtrl.create);
-
-app.get('/api/deposits', DepositsCtrl.index);
+app.post('/api/ripple_transactions', RippleTransactionsCtrl.create);
+app.post('/api/withdrawals', WithdrawalsCtrl.create);
 app.post('/api/deposits', DepositsCtrl.create);
+app.post('/api/bank_transactions', BankTransactionsCtrl.create);
+
+app.get('/api/withdrawals', WithdrawalsCtrl.index);
+app.get('/api/deposits', DepositsCtrl.index);
+
+app.get('/api/bank_accounts', BankAccountsCtrl.index);
+app.get('/api/balances', BalancesCtrl.index);
+app.get('/api/ripple_addresses', RippleAddressesCtrl.index);
+app.get('/api/ripple_transactions', RippleTransactionsCtrl.index);
 
 var port = process.env.PORT || 443;
 https.createServer(credentials,app).listen(port);
