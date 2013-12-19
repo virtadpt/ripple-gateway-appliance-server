@@ -1,3 +1,5 @@
+var BankAccount = require('../models/bank_account');
+
 module.exports = (function(){
 	function userIndex(req, res) {
 
@@ -8,7 +10,13 @@ module.exports = (function(){
 	}
 
   function index(req, res) {
-
+    BankAccount.findAll()
+		.success(function(bankAccounts){
+			res.send(bankAccounts);
+		})
+		.error(function(err){
+			res.send({ error: err });
+		})
 	}
 
 	return {

@@ -1,3 +1,6 @@
+var User = require('../models/user.js'),
+    utils   = require('../utils.js');
+
 module.exports = (function(){
 	function index(req, res) {
 		res.send({

@@ -1,3 +1,5 @@
+var User = require('../models/user.js');
+
 module.exports = (function() {
 	function index(req, res) {
 		User.all().success(function(users) {
