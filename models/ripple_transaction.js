@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
-var db = require('../db');
+var db = require('../config/sequelize');
 
-var RippleTx = sequelize.define('ripple_tx', {
+var RippleTx = sequelize.define('ripple_transaction', {
   id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, notNull: true },
   toCurrency: { type: Sequelize.STRING, notNull: true },
   toAmount: { type: Sequelize.DECIMAL, notNull: true },

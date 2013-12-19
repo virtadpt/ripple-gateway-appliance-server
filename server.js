@@ -4,9 +4,7 @@ var express = require('express'),
     https   = require('https'),
     path    = require('path'),
     pg      = require('pg'),
-    db      = require('./config/sequelize.js'),
-    User    = require('./models/user.js'),
-    utils   = require('./utils.js');
+    db      = require('./config/sequelize.js');
 
 var WithdrawalsCtrl     = require('./controllers/withdrawals.js'),
 		DepositsCtrl        = require('./controllers/deposits.js'),
