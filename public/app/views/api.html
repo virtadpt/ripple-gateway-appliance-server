@@ -52,7 +52,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/addresses.html">
-      Addresses
+      Ripple Addresses
     </a><br>
     <small>List bitcoin addresses associated with your account.</small>
   </h2>
@@ -72,7 +72,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/buttons.html">
-      Buttons
+      Bank Accounts
     </a><br>
     <small>Create payment buttons, pages, and iFrames to accept bitcoin on your website.</small>
   </h2>
@@ -96,7 +96,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/buys.html">
-      Buys
+      Ripple Addresses
     </a><br>
     <small>Purchase bitcoin.</small>
   </h2>
@@ -116,7 +116,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/contacts.html">
-      Contacts
+      Ripple Transactions
     </a><br>
     <small>List emails the user has previously used.</small>
   </h2>
@@ -136,7 +136,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/currencies.html">
-      Currencies
+      Bank Transactions
     </a><br>
     <small>Show supported currencies on Coinbase and exchange rates.</small>
   </h2>
@@ -160,7 +160,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/orders.html">
-      Orders
+      Sessions
     </a><br>
     <small>List merchant orders received.</small>
   </h2>
@@ -184,7 +184,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/prices.html">
-      Prices
+      Withdrawals
     </a><br>
     <small>Check the price to buy or sell bitcoin.</small>
   </h2>
@@ -212,7 +212,7 @@
   </table>
   <h2>
     <a href="https://coinbase.com/api/doc/1.0/recurring_payments.html">
-      Recurring Payments
+      Deposits
     </a><br>
     <small>List your recurring payments (scheduled buys, sells, subscriptions, etc)</small>
   </h2>
@@ -231,166 +231,6 @@
           <tr>
             <td><a href="https://coinbase.com/api/doc/1.0/recurring_payments/show.html">GET /api/v1/recurring_payments/:id</a></td>
             <td width="60%">Show an individual recurring payment.</td>
-          </tr>
-    </tbody>
-  </table>
-  <h2>
-    <a href="https://coinbase.com/api/doc/1.0/sells.html">
-      Sells
-    </a><br>
-    <small>Sell bitcoin.</small>
-  </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/sells/create.html">POST /api/v1/sells</a></td>
-            <td width="60%">Sell bitcoin and receive a credit to your U.S. bank account.</td>
-          </tr>
-    </tbody>
-  </table>
-  <h2>
-    <a href="https://coinbase.com/api/doc/1.0/subscribers.html">
-      Subscribers
-    </a><br>
-    <small>List/show customers who have subscribed to your merchant tools.</small>
-  </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/subscribers/index.html">GET /api/v1/subscribers</a></td>
-            <td width="60%">List customer subscriptions.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/subscribers/show.html">GET /api/v1/subscribers/:id</a></td>
-            <td width="60%">Show an individual customer subscription.</td>
-          </tr>
-    </tbody>
-  </table>
-  <h2>
-    <a href="https://coinbase.com/api/doc/1.0/tokens.html">
-      Tokens
-    </a><br>
-    <small>Create and claim tokens redeemable for bitcoin.</small>
-  </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/tokens/create.html">POST /api/v1/tokens</a></td>
-            <td width="60%">Create a token which can be redeemed for bitcoin</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/tokens/redeem.html">POST /api/v1/tokens/redeem</a></td>
-            <td width="60%">Redeem a token, claiming its address and all its bitcoins</td>
-          </tr>
-    </tbody>
-  </table>
-  <h2>
-    <a href="https://coinbase.com/api/doc/1.0/transactions.html">
-      Transactions
-    </a><br>
-    <small>Send money, request money, and view transaction history.</small>
-  </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transactions/index.html">GET /api/v1/transactions</a></td>
-            <td width="60%">List a user's recent transactions.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transactions/show.html">GET /api/v1/transactions/:id</a></td>
-            <td width="60%">Show details for an individual transaction.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transactions/send_money.html">POST /api/v1/transactions/send_money</a></td>
-            <td width="60%">Send bitcoins to an email address or bitcoin address.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transactions/request_money.html">POST /api/v1/transactions/request_money</a></td>
-            <td width="60%">Send an invoice/money request to an email address.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transactions/resend_request.html">PUT /api/v1/transactions/:id/resend_request</a></td>
-            <td width="60%">Resend emails for a money request.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transactions/cancel_request.html">DELETE /api/v1/transactions/:id/cancel_request</a></td>
-            <td width="60%">Cancel a money request.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transactions/complete_request.html">PUT /api/v1/transactions/:id/complete_request</a></td>
-            <td width="60%">Complete a money request.</td>
-          </tr>
-    </tbody>
-  </table>
-  <h2>
-    <a href="https://coinbase.com/api/doc/1.0/transfers.html">
-      Transfers
-    </a><br>
-    <small>List bitcoin buy and sell history.</small>
-  </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/transfers/index.html">GET /api/v1/transfers</a></td>
-            <td width="60%">List a user's recent buys and sells.</td>
-          </tr>
-    </tbody>
-  </table>
-  <h2>
-    <a href="https://coinbase.com/api/doc/1.0/users.html">
-      Users
-    </a><br>
-    <small>Create users.</small>
-  </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/users/create.html">POST /api/v1/users</a></td>
-            <td width="60%">Create or signup a new user.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/users/index.html">GET /api/v1/users</a></td>
-            <td width="60%">Show current user with account settings.</td>
-          </tr>
-          <tr>
-            <td><a href="https://coinbase.com/api/doc/1.0/users/update.html">PUT /api/v1/users/:id</a></td>
-            <td width="60%">Update account settings for current user.</td>
           </tr>
     </tbody>
   </table>
