@@ -2,6 +2,7 @@ var RippleTransactions = require('../models/ripple_transaction.js');
 
 module.exports = (function(){
   function userIndex(req, res) {
+	
 	}
   
   function create(req, res) {

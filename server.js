@@ -34,18 +34,17 @@ app.post('/api/session', SessionCtrl.create);
 app.get('/api/session', SessionCtrl.index);
 
 app.get('/api/users/:id/balances', BalancesCtrl.userBalances);
-app.get('/api/users/:user_id/bank_accounts', BankAccountsCtrl.userIndex);
-app.get('/api/users/:user_id/ripple_addresses', RippleAddressesCtrl.userIndex);
-app.get('/api/users/:user_id/bank_transactions', BankTransactionsCtrl.userIndex);
-app.get('/api/users/:user_id/ripple_transactions', RippleTransactionsCtrl.userIndex);
+app.get('/api/users/:userId/bank_accounts', BankAccountsCtrl.userIndex);
+app.get('/api/users/:userId/ripple_addresses', RippleAddressesCtrl.userIndex);
+app.get('/api/users/:userId/bank_transactions', BankTransactionsCtrl.userIndex);
+app.get('/api/users/:userId/ripple_transactions', RippleTransactionsCtrl.userIndex);
 
-app.post('/api/users/:user_id/bank_accounts', BankAccountsCtrl.create);
-app.post('/api/users/:user_id/ripple_addresses', RippleAddressesCtrl.create);
+app.post('/api/users/:userId/bank_accounts', BankAccountsCtrl.create);
+app.post('/api/users/:userId/ripple_addresses', RippleAddressesCtrl.create);
 
 app.post('/api/ripple_transactions', RippleTransactionsCtrl.create);
 app.post('/api/withdrawals', WithdrawalsCtrl.create);
 app.post('/api/deposits', DepositsCtrl.create);
-app.post('/api/bank_transactions', BankTransactionsCtrl.create);
 
 app.get('/api/withdrawals', WithdrawalsCtrl.index);
 app.get('/api/deposits', DepositsCtrl.index);

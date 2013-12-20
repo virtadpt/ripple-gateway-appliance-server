@@ -1,4 +1,5 @@
-var User = require('../models/user.js');
+var User = require('../models/user'),
+    utils = require('../utils');
 
 module.exports = (function() {
 	function index(req, res) {

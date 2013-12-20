@@ -2,7 +2,7 @@ var Balance = require('../models/balance.js');
 
 module.exports = (function(){
   function userBalances(req, res) {
-    Balance.findAll({ where: { userId: req.body.userId })
+    Balance.findAll({ where: { userId: req.body.userId }})
 		.success(function(balances) {
 		  res.send(balances);
 		})
