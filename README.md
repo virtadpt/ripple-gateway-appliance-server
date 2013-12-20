@@ -14,7 +14,7 @@ Download the app repo
 
 create a postgres user with password
 
-		psql> create table gateway_appliance;
+		psql> create database gateway_appliance;
 
 configure config/database.json and config/sequelize.js with postgres creds
 run database migrations
