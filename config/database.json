@@ -4,6 +4,6 @@
     "user": "postgres",
     "password": "password",
     "host": "127.0.0.1",
-    "database": "sequelize_development"
+    "database": "gateway_appliance"
   }
 }

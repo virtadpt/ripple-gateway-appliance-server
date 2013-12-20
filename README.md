@@ -4,6 +4,29 @@ The Ripple Gateway appliance is a virtual machine image that
 is meant to serve as a standalone package for configuring
 and running a Ripple gateway system.
 
+## Installation Instructions
+
+Download the app repo
+
+    git clone git@github.com:stevenzeiler/ripple-gateway-appliance-server.git
+		cd ripple-gateway-appliance-server
+		npm install
+
+create a postgres user with password
+
+		psql> create table gateway_appliance;
+
+configure config/database.json and config/sequelize.js with postgres creds
+run database migrations
+
+		db-migrate up --config config/database.json --env dev
+
+start the server
+	
+		foreman start
+
+Once the server is started visit https://0.0.0.0/app to use the app
+
 ## Creating a User's Gateway Account
 
 In order to interact with a gateway an end user must register
