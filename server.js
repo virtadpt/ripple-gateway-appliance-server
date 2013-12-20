@@ -46,10 +46,12 @@ app.post('/api/v1/ripple_transactions', RippleTransactionsCtrl.create);
 app.post('/api/v1/withdrawals', WithdrawalsCtrl.create);
 app.post('/api/v1/deposits', DepositsCtrl.create);
 
+app.get('/api/v1/bank_transactions', BankTransactionsCtrl.index);
 app.get('/api/v1/withdrawals', WithdrawalsCtrl.index);
 app.get('/api/v1/deposits', DepositsCtrl.index);
 
 app.get('/api/v1/bank_accounts', BankAccountsCtrl.index);
+app.post('/api/v1/bank_accounts', BankAccountsCtrl.create);
 app.get('/api/v1/balances', BalancesCtrl.index);
 app.get('/api/v1/ripple_addresses', RippleAddressesCtrl.index);
 app.get('/api/v1/ripple_transactions', RippleTransactionsCtrl.index);

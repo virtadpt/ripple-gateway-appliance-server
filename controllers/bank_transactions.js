@@ -1,3 +1,5 @@
+var BankTransaction = require("../models/bank_tx.js");
+
 module.exports = (function(){
 	function userIndex(req, res){
     BankTransaction.findAll({ where: { userId: req.body.userId }})

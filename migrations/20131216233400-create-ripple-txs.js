@@ -6,13 +6,15 @@ exports.up = function(db, callback) {
 		id: { type: 'int', primaryKey: true, autoIncrement: true, notNull: true, unique: true },
     issuance: { type: 'boolean', notNull: true },
     toCurrency: { type: 'string', notNull: true },
+    toAddress: { type: 'string', notNull: true },
+    fromAddress: { type: 'string', notNull: true },
     toAmount: { type: 'decimal', notNull: true },
-    destinationTag: { type: 'string' },
     fromCurrency: { type: 'string', notNull: true },
     fromAmount: { type: 'decimal', notNull: true },
-    txState: { type: 'string' },
     txHash: { type: 'string', notNull: true, unique: true },
     createdAt: { type: 'datetime', notNull: true },
+    destinationTag: { type: 'string' },
+    txState: { type: 'string' },
     updatedAt: { type: 'datetime' }
   }, callback);
 };

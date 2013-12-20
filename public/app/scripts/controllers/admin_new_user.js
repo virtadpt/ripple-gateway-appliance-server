@@ -7,7 +7,7 @@ angular.module('publicApp')
 			var password = $scope.user.password;
 			var confirmation = $scope.user.password_confirmation;
       if (password == confirmation) {
-		    $http.post('/api/users', {
+		    $http.post('/api/v1/users', {
 					name: name,
 					password: password
 				})	

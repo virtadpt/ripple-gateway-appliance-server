@@ -7,7 +7,7 @@ exports.up = function(db, callback) {
     deposit: { type: 'boolean', notNull: true },
     currency: { type: 'string', notNull: true },
     cashAmount: { type: 'decimal', notNull: true },
-    bankAccountId: { type: 'int'},
+    bankAccountId: { type: 'int', notNull: true },
     rippleTxId: { type: 'int'},
     createdAt: { type: 'datetime', notNull: true },
     updatedAt: { type: 'datetime' }

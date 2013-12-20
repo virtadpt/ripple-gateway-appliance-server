@@ -12,31 +12,33 @@ angular.module('publicApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/admin/balances', {
+        templateUrl: 'views/balances.html',
+        controller: 'BalancesCtrl'
+      })
       .when('/admin/users', {
         templateUrl: 'views/users.html',
         controller: 'UsersCtrl'
       })
+			.when('/admin/bank_transactions', {
+				templateUrl: 'views/bank_transactions.html',
+				controller: 'BankTxsCtrl'
+			})
 			.when('/api/docs', {
 				templateUrl: 'views/api.html',
 				controller: 'ApiDocsCtrl'
 			})
-/*
-			.when('/users/:id', {
-				templateUrl: 'views/user.html',
-				controller: 'UserCtrl'
+			.when('/admin/withdrawals/new', {
+				templateUrl: 'views/withdrawals/new.html',
+				controller: 'AdminWithdrawalsCtrl'
 			})
-			.when('/admin/users/:id', {
-				templateUrl: 'views/admin/users/index.html',
-				controller: 'AdminUserCtrl'
-			})
-			.when('/admin/users', {
-				templateUrl: 'views/admin/users/index.html',
-				controller: 'AdminUsersCtrl'
-			})
-*/
 			.when('/admin/deposits/new', {
 				templateUrl: 'views/deposits/new.html',
 				controller: 'AdminDepositsCtrl'
+			})
+			.when('/admin/bank_accounts', {
+				templateUrl: 'views/admin/bank_accounts/index.html',
+				controller: 'BankAccountsCtrl'
 			})
 			.when('/admin/users/new', {
 				templateUrl: 'views/admin/users/new.html',

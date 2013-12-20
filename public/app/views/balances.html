@@ -1,0 +1,18 @@
+<div class='col-md-12'>
+	<h2>List all Users</h2>
+  <table class='table table-striped'>
+   <tr>
+		  <td>#</td>	
+		  <td>user</td>	
+		  <td>currency</td>	
+		  <td>created at</td>	
+		</tr>
+		<hr/>
+		<tr ng-repeat='balance in balances'>
+			<td>{{ balance.id }}</td>
+			<td>{{ balance.userId }}</td>
+			<td>{{ balance.currency }}</td>
+			<td>{{ balance.createdAt }}</td>
+		<tr>
+  </table>
+</div>

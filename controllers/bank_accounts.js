@@ -12,9 +12,9 @@ module.exports = (function(){
   }
   
   function create(req, res) {
-    if (req.params.userId) {
+    if (req.body.userId) {
 			BankAccount.create({
-		    userId: req.params.userId,	
+		    userId: req.body.userId,	
 			})
 			.success(function(bankAccount){
 				res.send(bankAccount);

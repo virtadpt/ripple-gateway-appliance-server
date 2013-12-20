@@ -5,7 +5,7 @@ angular.module('publicApp')
 		$scope.deposits = [];
 
 		function getDeposits() {
-			$http.get('/api/deposits')
+			$http.get('/api/v1/deposits')
 			.success(function(deposits) {
 				$scope.deposits = deposits;
 			})
@@ -19,7 +19,7 @@ angular.module('publicApp')
 			var userId = $scope.deposit.userId;
 			var currency = $scope.deposit.currency;
 			var cashAmount = $scope.deposit.cashAmount;
-			$http.post('/api/deposits', { currency: currency, cashAmount: cashAmount })	
+			$http.post('/api/v1/deposits', { currency: currency, cashAmount: cashAmount })	
 			.success(function(){
 				getDeposits();
 			})

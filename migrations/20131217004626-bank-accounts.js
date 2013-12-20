@@ -5,8 +5,8 @@ exports.up = function(db, callback) {
   db.createTable('bank_accounts', { 
     id: { type: 'int', primaryKey: true, autoIncrement: true },
     userId: { type: 'int', unique: true, notNull: true },
-    createdAt: { type: 'date', notNull: true },
-    updatedAt: { type: 'date', unique: true, notNull: true }
+    createdAt: { type: 'datetime', notNull: true },
+    updatedAt: { type: 'datetime', unique: true, notNull: true }
   }, callback);
 }
 
