@@ -24,7 +24,7 @@ run database migrations
 
 start the server
 	
-		foreman start
+		node server.js
 
 Once the server is started visit https://0.0.0.0/app to use the app
 
