@@ -16,6 +16,10 @@ angular.module('publicApp', [
         templateUrl: 'views/users.html',
         controller: 'UsersCtrl'
       })
+			.when('/api/docs', {
+				templateUrl: 'views/api.html',
+				controller: 'ApiDocsCtrl'
+			})
 /*
 			.when('/users/:id', {
 				templateUrl: 'views/user.html',

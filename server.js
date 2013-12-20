@@ -28,31 +28,31 @@ app.use(express.session({secret: 'oi09ajsdf09fwlkej33lkjpx'}));
 app.use(express.methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/api/users', UsersCtrl.index);
-app.post('/api/users', UsersCtrl.create);
-app.post('/api/session', SessionCtrl.create);
-app.get('/api/session', SessionCtrl.index);
+app.get('/api/v1/users', UsersCtrl.index);
+app.post('/api/v1/users', UsersCtrl.create);
+app.post('/api/v1/session', SessionCtrl.create);
+app.get('/api/v1/session', SessionCtrl.index);
 
-app.get('/api/users/:id/balances', BalancesCtrl.userBalances);
-app.get('/api/users/:userId/bank_accounts', BankAccountsCtrl.userIndex);
-app.get('/api/users/:userId/ripple_addresses', RippleAddressesCtrl.userIndex);
-app.get('/api/users/:userId/bank_transactions', BankTransactionsCtrl.userIndex);
-app.get('/api/users/:userId/ripple_transactions', RippleTransactionsCtrl.userIndex);
+app.get('/api/v1/users/:id/balances', BalancesCtrl.userBalances);
+app.get('/api/v1/users/:userId/bank_accounts', BankAccountsCtrl.userIndex);
+app.get('/api/v1/users/:userId/ripple_addresses', RippleAddressesCtrl.userIndex);
+app.get('/api/v1/users/:userId/bank_transactions', BankTransactionsCtrl.userIndex);
+app.get('/api/v1/users/:userId/ripple_transactions', RippleTransactionsCtrl.userIndex);
 
-app.post('/api/users/:userId/bank_accounts', BankAccountsCtrl.create);
-app.post('/api/users/:userId/ripple_addresses', RippleAddressesCtrl.create);
+app.post('/api/v1/users/:userId/bank_accounts', BankAccountsCtrl.create);
+app.post('/api/v1/users/:userId/ripple_addresses', RippleAddressesCtrl.create);
 
-app.post('/api/ripple_transactions', RippleTransactionsCtrl.create);
-app.post('/api/withdrawals', WithdrawalsCtrl.create);
-app.post('/api/deposits', DepositsCtrl.create);
+app.post('/api/v1/ripple_transactions', RippleTransactionsCtrl.create);
+app.post('/api/v1/withdrawals', WithdrawalsCtrl.create);
+app.post('/api/v1/deposits', DepositsCtrl.create);
 
-app.get('/api/withdrawals', WithdrawalsCtrl.index);
-app.get('/api/deposits', DepositsCtrl.index);
+app.get('/api/v1/withdrawals', WithdrawalsCtrl.index);
+app.get('/api/v1/deposits', DepositsCtrl.index);
 
-app.get('/api/bank_accounts', BankAccountsCtrl.index);
-app.get('/api/balances', BalancesCtrl.index);
-app.get('/api/ripple_addresses', RippleAddressesCtrl.index);
-app.get('/api/ripple_transactions', RippleTransactionsCtrl.index);
+app.get('/api/v1/bank_accounts', BankAccountsCtrl.index);
+app.get('/api/v1/balances', BalancesCtrl.index);
+app.get('/api/v1/ripple_addresses', RippleAddressesCtrl.index);
+app.get('/api/v1/ripple_transactions', RippleTransactionsCtrl.index);
 
 var port = process.env.PORT || 443;
 https.createServer(credentials,app).listen(port);
