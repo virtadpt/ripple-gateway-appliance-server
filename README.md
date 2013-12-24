@@ -47,3 +47,13 @@ table schema is managed using the `db-migrate` node.js module: https://github.co
 
 To run the migrations configure database.json with the correct db credentials,
 then run `db-migrate up --config ./database.json --env dev`. Db-migrate tracks the migrations that have run in a `migrations` table in the database. To roll back a database migration run `db-migrate down --config ./database.json --env dev`. This migration feature will allow us to alter database tables in the future by pushing changes in git.
+
+## Installing ZeroMQ
+
+		sudo apt-get install libtool autoconf automake uuid-dev build-essential
+		cd ~
+		wget http://download.zeromq.org/zeromq-4.0.3.tar.gz
+		tar zxvf zeromq-4.0.3.tar.gz && cd zeromq-4.0.3
+		./configure
+		make && make install
+		sudo ldconfig
