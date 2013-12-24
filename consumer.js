@@ -1,5 +1,9 @@
-var zmq = require('zmq');
+/* Requires ENV configuration
 
+export RIPPLE_ADDRESS
+
+*/
+var zmq = require('zmq');
 
 var consumer = zmq.socket('pull');
 
