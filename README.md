@@ -14,13 +14,15 @@ Download the app repo
 
 create a postgres user with password
 
+		sudo -u postgres psql
 		psql> create table gateway_appliance;
 		psql> ALTER USER Postgres WITH PASSWORD '<newpassword>';
 
-configure config/database.json and config/sequelize.js with postgres creds
-run database migrations
+Edit config/database.json and config/sequelize.js to add new Postgres credentials.
 
-		db-migrate up --config config/database.json --env dev
+Run database migrations
+
+		sudo -u postgres db-migrate up --config config/database.json --env dev
 
 start the server
 	
